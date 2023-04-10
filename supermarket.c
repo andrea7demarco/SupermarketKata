@@ -10,6 +10,16 @@ typedef struct Producto
     char nombre[MAX];
 } Producto;
 
+struct Nodo{
+    Producto *productos;
+    struct Lista *siguiente;
+} typedef Nodo;
+
+typedef struct Nodo *Lista;
+
+Lista crearLista();
+Lista insertar(Lista L, Producto productos);
+void mostrarLista(Lista L);
 void CargarProductos(Producto productos[]);
 void mostrarProducto(Producto productos);
 
@@ -25,6 +35,33 @@ int main()
 
     return 0;
 }
+
+Lista crearLista(){
+    Lista L;
+    L = NULL;
+    return L;
+}
+
+Lista insertar(Lista L, Producto productos){
+    struct Nodo *nuevo;
+    nuevo = malloc(sizeof(struct Nodo)*20);
+    nuevo->productos->precio = rand()%3000+100;
+    int aux = rand()%3;
+    char Nombres[3][20] =  {"Leche serenisima 1l", "Frutilla 500 Gr", "Arándano 125 Gr"};
+    strcpy(nuevo->productos->nombre, Nombres[aux]);
+    nuevo->siguiente;
+    L = nuevo;
+    return L;
+
+}
+
+void mostrarLista(Lista L){
+    while(L != NULL){
+        printf("Precio = $%d -- Nombre: %s", L->productos->precio, L->productos->nombre);
+        L = L->siguiente;
+    }
+}
+
 
 void CargarProductos(Producto productos[])
 {
